@@ -51,6 +51,117 @@ and (0, 100%) is the bottom left corner.
     url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
+  position: relative;
 
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+}
+
+/* 
+left: 50% - this will move the text box to the center from the left side by 50% of the viewport width.
+
+transform: translate(-50%, -50%); - Because these 50% are now no longer in relation to the parent element, but of the element itself.
+We want -50%, it will be shifted half of the width to the left side.
+Same for the height, -50% says that it will be shifted 50% of the element's height to the top.
+*/
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  backface-visibility: hidden;
+  /* 
+  it determines whether the back part of the element, when we transform it, is visible or hidden for the user.
+  */
+}
+
+/* 
+To make them one above the other one, we use display: block, because block elements occupy the entire width they have available,
+and they create line breaks before and after themselves.
+*/
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  
+  
+  /* 
+  animation-delay: 3s;
+  animation-iteration-count: 3;
+  */
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+
+  animation: moveInRight 1s ease-out;
+}
+
+/* 
+keyframes - we define the animation here. We give it a name, moveInLeft, and we define the properties that will change during the animation.
+We start from 0% with opacity 0 and translateX -100px (move to the left by 100px), meaning invisible and off the screen.
+We finish at 100% with opacity 1 and translateX 0 (move to the left by 0px), meaning visible and on the screen.
+We also have a middle point at 80% where the element will move to the right by 10px.
+
+IMPORTANT: The animation will not work until we apply it to an element in the CSS. 
+So we need animation-name and animation-duration properties in the element that we want to animate.
+Animation-delay is optional, it will delay the start of the animation.
+Animation-iteration-count is optional, it will define how many times the animation will run.
+Animation-timing-function is optional, it will define the speed curve of the animation. 
+Ease-in is a slow start and fast finish. Ease-out is a fast start and slow finish.
+Animation: moveInRight 1s ease-out; - this is a shorthand for all the animation properties.
+*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
