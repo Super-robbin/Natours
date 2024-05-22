@@ -1,0 +1,58 @@
+/* 
+95vh - 95% of the  
+background-position: top - whatever the viewport size, the image will always be at the top, and the rest of the image will be cropped.
+
+background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ), - the gradient will come from the top left to the bottom right, and the colors will be light green to medium green. The 0.8 is the opacity of the gradient.
+    The image will be displayed below (behind) the gradient.
+
+IMPORTANT: We replaced the colours with the variables we defined at the top.
+
+clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); - this will create a clip path that will cut the image in 4 specific points. 
+The image will be displayed only in the area that is not cut by the clip path. Each of the 4 points is a coordinate (x, y) in the image. 
+(0, 0) is the top left corner, (100%, 0) is the top right corner, (100%, 75vh) is the bottom right corner (we use vh so it adjusts dynamically when the page shrinks,
+and (0, 100%) is the bottom left corner.
+*/
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+  
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  
+    &__logo-box {
+      position: absolute;
+      top: 4rem;
+      left: 4rem;
+    }
+  
+    &__logo {
+      height: 3.5rem;
+    }
+  
+    /* 
+    left: 50% - this will move the text box to the center from the left side by 50% of the viewport width.
+  
+    transform: translate(-50%, -50%); - Because these 50% are now no longer in relation to the parent element, but of the element itself.
+    We want -50%, it will be shifted half of the width to the left side.
+    Same for the height, -50% says that it will be shifted 50% of the element's height to the top.
+    */
+    &__text-box {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+  }

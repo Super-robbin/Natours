@@ -1,119 +1,3 @@
-/* CSS RESET - We reset with universal selector below */
-/* 
-We moved box-sizing: border-box inside the body, then here below we use inherit to set the box-sizing property on each and every element
-on the page.
-Additionally, we use *::after and *::before otherwise only the real elements get this behavior, not the pseudo-elements.
-*/
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit; }
-
-/* 
-By changing all px units to rem, we can change the font size of the entire website by changing the font-size of the html element.
-This is useful for responsive design when using media queries because instead of writing lots of lines of code,
-we can just change the font-size of the html element and everything will adjust accordingly (rem unit is always relative to the root font-size).
-The root font-size is set in the HTML selector below.
-Font-size: 10px (so = 1rem), therefore 16px = 1.6rem.
-See below the changes from px to rem.
-IMPORTANT: If we change the font-size to 5px, everything styled so far (header) will be mobile-friendly.
-
-IMPORTANT: If we use px we override the user's browser settings. To avoid this, we use %. Remember the default browser font-size is 16px.
-Since we now need 10px and not 16px, we do the calcution 10/16 = 62.5%. So we set the font-size to 62.5%.
-This way the user's browser settings will be respected.
-*/
-html {
-  /* font-size: 10px; */
-  font-size: 62.5%; }
-
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  /* font-size: 16px; */
-  line-height: 1.7;
-  color: #777;
-  /* padding: 30px; */
-  padding: 3rem;
-  box-sizing: border-box; }
-
-/* 
-95vh - 95% of the  
-background-position: top - whatever the viewport size, the image will always be at the top, and the rest of the image will be cropped.
-
-background-image: linear-gradient(
-      to right bottom,
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 133, 0.8)
-    ), - the gradient will come from the top left to the bottom right, and the colors will be light green to medium green. The 0.8 is the opacity of the gradient.
-    The image will be displayed below (behind) the gradient.
-
-IMPORTANT: We replaced the colours with the variables we defined at the top.
-
-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); - this will create a clip path that will cut the image in 4 specific points. 
-The image will be displayed only in the area that is not cut by the clip path. Each of the 4 points is a coordinate (x, y) in the image. 
-(0, 0) is the top left corner, (100%, 0) is the top right corner, (100%, 75vh) is the bottom right corner (we use vh so it adjusts dynamically when the page shrinks,
-and (0, 100%) is the bottom left corner.
-*/
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* 
-  left: 50% - this will move the text box to the center from the left side by 50% of the viewport width.
-
-  transform: translate(-50%, -50%); - Because these 50% are now no longer in relation to the parent element, but of the element itself.
-  We want -50%, it will be shifted half of the width to the left side.
-  Same for the height, -50% says that it will be shifted 50% of the element's height to the top.
-  */ }
-  .header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  /* 
-  it determines whether the back part of the element, when we transform it, is visible or hidden for the user.
-  */
-  margin-bottom: 6rem;
-  /* 
-  To make them one above the other one, we use display: block, because block elements occupy the entire width they have available,
-  and they create line breaks before and after themselves.
-  */ }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    /* 
-    animation-delay: 3s;
-    animation-iteration-count: 3;
-    */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    animation: moveInRight 1s ease-out; }
-
 /* 
 keyframes - we define the animation here. We give it a name, moveInLeft, and we define the properties that will change during the animation.
 We start from 0% with opacity 0 and translateX -100px (move to the left by 100px), meaning invisible and off the screen.
@@ -158,6 +42,78 @@ Additionally, we can use the animation on hover, click, etc. by using the animat
     opacity: 1;
     transform: translate(0); } }
 
+/* CSS RESET - We reset with universal selector below */
+/* 
+We moved box-sizing: border-box inside the body, then here below we use inherit to set the box-sizing property on each and every element
+on the page.
+Additionally, we use *::after and *::before otherwise only the real elements get this behavior, not the pseudo-elements.
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+/* 
+By changing all px units to rem, we can change the font size of the entire website by changing the font-size of the html element.
+This is useful for responsive design when using media queries because instead of writing lots of lines of code,
+we can just change the font-size of the html element and everything will adjust accordingly (rem unit is always relative to the root font-size).
+The root font-size is set in the HTML selector below.
+Font-size: 10px (so = 1rem), therefore 16px = 1.6rem.
+See below the changes from px to rem.
+IMPORTANT: If we change the font-size to 5px, everything styled so far (header) will be mobile-friendly.
+
+IMPORTANT: If we use px we override the user's browser settings. To avoid this, we use %. Remember the default browser font-size is 16px.
+Since we now need 10px and not 16px, we do the calcution 10/16 = 62.5%. So we set the font-size to 62.5%.
+This way the user's browser settings will be respected.
+*/
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  /* padding: 30px; */
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  /* 
+    it determines whether the back part of the element, when we transform it, is visible or hidden for the user.
+    */
+  margin-bottom: 6rem;
+  /* 
+    To make them one above the other one, we use display: block, because block elements occupy the entire width they have available,
+    and they create line breaks before and after themselves.
+    */ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* 
+      animation-delay: 3s;
+      animation-iteration-count: 3;
+      */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
+
 /* 
 Display: inline-block is treated as it was a text.
 Transition: all 0.2s - this will create a smooth transition effect for all properties that change (i.e. transform: translate below).
@@ -165,30 +121,30 @@ IMPORTANT: The transition property must be in the default state of the element, 
 */
 .btn {
   /* 
-  Transform: translateY(-3px); to create a hover effect where the button will move up by 3px when hovered.
-  Transform: translateY(-1px); to create a click effect where the button will move up by 1px when clicked.
-  IMPORTANT: -1px is relative to the original position of the element, not the position after the hover effect.
-  */
+    Transform: translateY(-3px); to create a hover effect where the button will move up by 3px when hovered.
+    Transform: translateY(-1px); to create a click effect where the button will move up by 1px when clicked.
+    IMPORTANT: -1px is relative to the original position of the element, not the position after the hover effect.
+    */
   /* 
-  ::after pseudo-element adds a virtual element right after the element that we're selecting (treated as a child of that element).
-  The trick here is to add an element that looks exactly like the button that we already have,
-  but we put it behind the button. When we hover out of the button, then this hidden pseudo-element amazingly goes back behind the button.
-  1 - We have to specify its content, even if it's empty, otherwise it won't appear on the screen.
-  2 - We have to specify its display property, in this case inline-block, because the button that we have is an inline-block element.
-  3 - We have to specify its height and width, in this case 100% of the button.
-  4 - We have to specify its border-radius, in this case 100% of the button.
-  5 - We want the button to be white, so we have to select .btn-white::after and specify its background-color.
-  6 - We have to specify its position, in this case absolute, so it will be positioned relative to the button (PUT position:relative in the button).
-  7 - We have to specify its top and left, in this case 0, so it will be positioned at the top left corner of the button.
-  8 - We have to specify its z-index, in this case -1, so it will be behind the button.
-  9 - We want the button to grow when hovered, so we have to select .btn:hover::after and specify its transform for x and y.
-  10 - We want the button to disappear when hovered, so we have to select .btn:hover::after and specify its opacity: 0.
-  11 - We have to specify its transition, in this case all 0.4s, so it will have a smooth transition effect.
-  12 - We have to create a class for the animation, in this case .btn-animated, and specify the animation properties there,
-  in this case moveInBottom 0.5s ease-out 0.75s (delay for animation to start).
-  13 - We also specify the animation-fill-mode: backwards, it automatically applies the styles up to zero percent before the animation starts.
-  In our case it will apply the opacity: 0 and translateY(30px) before the animation starts.
-  */ }
+    ::after pseudo-element adds a virtual element right after the element that we're selecting (treated as a child of that element).
+    The trick here is to add an element that looks exactly like the button that we already have,
+    but we put it behind the button. When we hover out of the button, then this hidden pseudo-element amazingly goes back behind the button.
+    1 - We have to specify its content, even if it's empty, otherwise it won't appear on the screen.
+    2 - We have to specify its display property, in this case inline-block, because the button that we have is an inline-block element.
+    3 - We have to specify its height and width, in this case 100% of the button.
+    4 - We have to specify its border-radius, in this case 100% of the button.
+    5 - We want the button to be white, so we have to select .btn-white::after and specify its background-color.
+    6 - We have to specify its position, in this case absolute, so it will be positioned relative to the button (PUT position:relative in the button).
+    7 - We have to specify its top and left, in this case 0, so it will be positioned at the top left corner of the button.
+    8 - We have to specify its z-index, in this case -1, so it will be behind the button.
+    9 - We want the button to grow when hovered, so we have to select .btn:hover::after and specify its transform for x and y.
+    10 - We want the button to disappear when hovered, so we have to select .btn:hover::after and specify its opacity: 0.
+    11 - We have to specify its transition, in this case all 0.4s, so it will have a smooth transition effect.
+    12 - We have to create a class for the animation, in this case .btn-animated, and specify the animation properties there,
+    in this case moveInBottom 0.5s ease-out 0.75s (delay for animation to start).
+    13 - We also specify the animation-fill-mode: backwards, it automatically applies the styles up to zero percent before the animation starts.
+    In our case it will apply the opacity: 0 and translateY(30px) before the animation starts.
+    */ }
   .btn:link, .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
@@ -226,3 +182,48 @@ IMPORTANT: The transition property must be in the default state of the element, 
   .btn--animated {
     animation: moveInBottom 0.5s ease-out 0.75s;
     animation-fill-mode: backwards; }
+
+/* 
+95vh - 95% of the  
+background-position: top - whatever the viewport size, the image will always be at the top, and the rest of the image will be cropped.
+
+background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ), - the gradient will come from the top left to the bottom right, and the colors will be light green to medium green. The 0.8 is the opacity of the gradient.
+    The image will be displayed below (behind) the gradient.
+
+IMPORTANT: We replaced the colours with the variables we defined at the top.
+
+clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); - this will create a clip path that will cut the image in 4 specific points. 
+The image will be displayed only in the area that is not cut by the clip path. Each of the 4 points is a coordinate (x, y) in the image. 
+(0, 0) is the top left corner, (100%, 0) is the top right corner, (100%, 75vh) is the bottom right corner (we use vh so it adjusts dynamically when the page shrinks,
+and (0, 100%) is the bottom left corner.
+*/
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* 
+    left: 50% - this will move the text box to the center from the left side by 50% of the viewport width.
+  
+    transform: translate(-50%, -50%); - Because these 50% are now no longer in relation to the parent element, but of the element itself.
+    We want -50%, it will be shifted half of the width to the left side.
+    Same for the height, -50% says that it will be shifted 50% of the element's height to the top.
+    */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }

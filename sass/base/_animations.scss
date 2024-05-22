@@ -1,0 +1,59 @@
+/* 
+keyframes - we define the animation here. We give it a name, moveInLeft, and we define the properties that will change during the animation.
+We start from 0% with opacity 0 and translateX -100px (move to the left by 100px), meaning invisible and off the screen.
+We finish at 100% with opacity 1 and translateX 0 (move to the left by 0px), meaning visible and on the screen.
+We also have a middle point at 80% where the element will move to the right by 10px.
+
+IMPORTANT: The animation will not work until we apply it to an element in the CSS.
+So we need animation-name and animation-duration properties in the element that we want to animate.
+Animation-delay is optional, it will delay the start of the animation.
+Animation-iteration-count is optional, it will define how many times the animation will run.
+Animation-timing-function is optional, it will define the speed curve of the animation. 
+Ease-in is a slow start and fast finish. Ease-out is a fast start and slow finish.
+Animation: moveInRight 1s ease-out; - this is a shorthand for all the animation properties.
+
+Additionally, we can use the animation on hover, click, etc. by using the animation property in the pseudo-classes.
+*/
+@keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-10rem);
+    }
+  
+    80% {
+      transform: translateX(1rem);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+  
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(10rem);
+    }
+  
+    80% {
+      transform: translateX(-1rem);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+  
+  @keyframes moveInBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }

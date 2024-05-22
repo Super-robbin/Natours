@@ -1,0 +1,37 @@
+/* CSS RESET - We reset with universal selector below */
+/* 
+We moved box-sizing: border-box inside the body, then here below we use inherit to set the box-sizing property on each and every element
+on the page.
+Additionally, we use *::after and *::before otherwise only the real elements get this behavior, not the pseudo-elements.
+*/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* 
+By changing all px units to rem, we can change the font size of the entire website by changing the font-size of the html element.
+This is useful for responsive design when using media queries because instead of writing lots of lines of code,
+we can just change the font-size of the html element and everything will adjust accordingly (rem unit is always relative to the root font-size).
+The root font-size is set in the HTML selector below.
+Font-size: 10px (so = 1rem), therefore 16px = 1.6rem.
+See below the changes from px to rem.
+IMPORTANT: If we change the font-size to 5px, everything styled so far (header) will be mobile-friendly.
+
+IMPORTANT: If we use px we override the user's browser settings. To avoid this, we use %. Remember the default browser font-size is 16px.
+Since we now need 10px and not 16px, we do the calcution 10/16 = 62.5%. So we set the font-size to 62.5%.
+This way the user's browser settings will be respected.
+*/
+html {
+  // This defines what 1rem is
+  // Font-size: 10px
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
