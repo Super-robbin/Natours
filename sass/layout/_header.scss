@@ -9,7 +9,7 @@ background-image: linear-gradient(
     ), - the gradient will come from the top left to the bottom right, and the colors will be light green to medium green. The 0.8 is the opacity of the gradient.
     The image will be displayed below (behind) the gradient.
 
-IMPORTANT: We replaced the colours with the variables we defined at the top.
+IMPORTANT: We replaced the colours with the variables we defined in _variables.scss.
 
 clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); - this will create a clip path that will cut the image in 4 specific points. 
 The image will be displayed only in the area that is not cut by the clip path. Each of the 4 points is a coordinate (x, y) in the image. 

@@ -47,3 +47,23 @@ body {
       animation: moveInRight 1s ease-out;
     }
   }
+
+  // Display: inline-block; makes this element not occupying 100% of its available width
+  // -webkit-background-clip: text; makes the gradient only visible on the text
+  // color: transparent; makes the text color transparent so we can see the gradient instead
+  .heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: skewY(2deg) skewX(15deg) scale(1.1);
+      text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+    }
+  }
