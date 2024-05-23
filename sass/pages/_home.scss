@@ -4,3 +4,22 @@
 
     margin-top: -20vh
 }
+
+.section-features {
+    padding: 20rem 0;
+    // We recreated the gradient from the header and use skew instead of clip-path. However, this will skew all the children elements as well.
+    // To fix this, we use the & > * selector to select all the direct children of the section-features class and skew them back to normal.
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url(../img/nat-4.jpg);
+      background-size: cover;
+    
+    transform: skewY(-7deg);
+    margin-top: -11rem;
+    & > * {
+        transform: skewY(7deg);
+    }
+}
