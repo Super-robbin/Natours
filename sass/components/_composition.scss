@@ -1,0 +1,49 @@
+.composition {
+    position: relative;
+
+    &__photo {
+        // Always set the width of the image in % so it will scale with the viewport,
+        // same for left and right positioning
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        // border-radius: 2px;
+        position: absolute;
+        z-index: 10;
+        transition: all .2s;
+        outline-offset: 2rem;
+
+        &--p1 {
+            left:0;
+            top: -2rem;
+        }
+
+        &--p2 {
+            right:0;
+            top: 2rem;
+        }
+
+        &--p3 {
+            left:20%;
+            top: 10rem;
+        }
+
+        // 1 - To make the image appear on top of the other images we use transform: scale(1.05) translateY(-.5rem) and z-index: 20.
+        // 2 - We also need to set a lower z-index in all photos above and the transition property for the animation to work.
+        // 3 - We use outline below instead of the border property because then we set outline-offset: 2rem to create space between the image and the outline.
+        // 4 - We use &:hover (on the composition element) to target the photo element when the composition is hovered and &__photo:not(:hover)
+        // to target the photo element when it's not hovered.
+        // composition:hover .composition__photo:not(:hover) When we hover the composition, we then select the composition photo which is not hovered.
+
+        &:hover {
+            outline: 1.5rem solid $color-primary;
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+        }
+    }
+
+
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+    }
+}
