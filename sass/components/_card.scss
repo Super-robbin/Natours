@@ -1,4 +1,5 @@
 .card {
+  // FUNCTIONALITY
   // Perspective property is used to give a 3D effect to the element that roatates. It is used in the parent element.
   // The lower the value, the more dramatic the 3D effect will be.
   perspective: 150rem;
@@ -6,21 +7,18 @@
   position: relative;
   height: 50rem;
 
-
   &__side {
-    color: #fff;
-    font-size: 2rem;
-
     height: 50rem;
     // Without animation timing, the card will flip instantly. We want to make it smooth so we use ease.
-    transition: all .8s ease;
+    transition: all 0.8s ease;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     backface-visibility: hidden;
-    border-radius: .3rem;
-    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    border-radius: 0.3rem;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
     // 1 - To make the two sides one on top of the other, we need to use position: absolute; relative to the parent element.
     // 2 - We use top: 0; and left: 0; to make sure the sides are positioned at the top left corner of the parent element.
     // 3 - We also have to use width: 100% so that the sides are the same width as the parent element.
@@ -38,29 +36,83 @@
       // When we hover it, we want to rotate it back to 0 degrees.
       transform: rotateY(180deg);
 
-        // 6 - We use another modifier for the different back cards (i.e. &-1, &-2, &-3) and we give them different background images to create the gradient.
-        &-1 {
-          background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
-        }
+      // 6 - We use another modifier for the different back cards (i.e. &-1, &-2, &-3) and we give them different background images to create the gradient.
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
 
-        &-2 {
-          background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
-        }
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
 
-        &-3 {
-          background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
-        }
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
     }
   }
 
   &:hover &__side--front {
-    // Opposite for this, it starts at 0 degrees and when we hover it, it rotates 180 degrees.
-    transform: rotateY(180deg);
+    // Opposite for this, it starts at 0 degrees and when we hover it, it rotates -180 degrees.
+    transform: rotateY(-180deg);
   }
 
   &:hover &__side--back {
     transform: rotateY(0deg);
   }
-}
 
-// .card:hover .card__side - when the card is hovered, the card__side element will rotate (transform) 180 degrees.
+  // FRONT SIDE STYLING
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 {
+      // We use the below path to the image because we need to think that this style will be compiled to the css folder.
+      // 1 - We use background-image to add a background image to combine gradient (first) and image (second).
+      // 2 - We use background-blend-mode: screen in &__picture; This is a new CSS property that allows us to blend two images together.
+      // 3 - We use clip-path to create a polygon shape that will clip the image similar to the header.
+      // 4 - We use -webkit-clip-path to make sure it works in Safari and other browsers.
+      // IMPORTANT: Make sure you use the prefix first (-webkit-clip-path) and then the standard property (clip-path).
+
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+
+    &--2 {
+      background-image: url(../img/nat-5.jpg);
+    }
+
+    &--3 {
+      background-image: url(../img/nat-5.jpg);
+    }
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+  }
+}
