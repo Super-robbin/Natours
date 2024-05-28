@@ -1,0 +1,66 @@
+.card {
+  // Perspective property is used to give a 3D effect to the element that roatates. It is used in the parent element.
+  // The lower the value, the more dramatic the 3D effect will be.
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 50rem;
+
+
+  &__side {
+    color: #fff;
+    font-size: 2rem;
+
+    height: 50rem;
+    // Without animation timing, the card will flip instantly. We want to make it smooth so we use ease.
+    transition: all .8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: .3rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    // 1 - To make the two sides one on top of the other, we need to use position: absolute; relative to the parent element.
+    // 2 - We use top: 0; and left: 0; to make sure the sides are positioned at the top left corner of the parent element.
+    // 3 - We also have to use width: 100% so that the sides are the same width as the parent element.
+    // 4 - We use backface-visibility: hidden; to make sure the back side is not visible when the front side is visible.
+    // 5 - IMPORTANT: Since we are using position: absolute, we have to specify the same height in the parent element as well.
+    // It's because they are taken out of the natural flow. So, we took these cards out of their natural flow. And therefore the parent collapsed and lost its height.
+    // 7 - We add border-radius and border-shadow to make the cards look better.
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      // Before we hover the card, the back side is already flipped so transform: rotateY(180deg);
+      // When we hover it, we want to rotate it back to 0 degrees.
+      transform: rotateY(180deg);
+
+        // 6 - We use another modifier for the different back cards (i.e. &-1, &-2, &-3) and we give them different background images to create the gradient.
+        &-1 {
+          background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+        }
+
+        &-2 {
+          background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+        }
+
+        &-3 {
+          background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+        }
+    }
+  }
+
+  &:hover &__side--front {
+    // Opposite for this, it starts at 0 degrees and when we hover it, it rotates 180 degrees.
+    transform: rotateY(180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0deg);
+  }
+}
+
+// .card:hover .card__side - when the card is hovered, the card__side element will rotate (transform) 180 degrees.
