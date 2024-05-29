@@ -5,10 +5,10 @@
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 50rem;
+  height: 52rem;
 
   &__side {
-    height: 50rem;
+    height: 52rem;
     // Without animation timing, the card will flip instantly. We want to make it smooth so we use ease.
     transition: all 0.8s ease;
     position: absolute;
@@ -106,6 +106,15 @@
   }
 
   &__heading {
+    // 1 - We use position: absolute to place the heading on top of the picture.
+    // 2 - We add heading-span (a new element and not a modifier) inside the h4 in HTML to create the gradiant effect on the heading.
+    // 3 - We add a background image to the heading-span to create the gradient effect.
+    // 4 - We add width 75% to the heading to make sure it doesn't take the full width of the card.
+    // 5 - We add a bit of padding inside the __heading-span to create some more space.
+    // IMPORTANT: Note that the __heading-span is treated as one block element, so when we add padding and it goes into two lines, 
+    // the end of the first line and the beginning of the second line won't have any space. Therefore, we use box-decoration-break: clone; to fix this.
+    // 6 - Box-decoration-break: clone; is a new CSS property that allows us to add padding to the text and make sure that the padding is also applied to the second line.
+    // Remember to use the prefix first (-webkit-box-decoration-break) and then the standard property (box-decoration-break).
     font-size: 2.8rem;
     font-weight: 300;
     text-transform: uppercase;
@@ -114,5 +123,41 @@
     position: absolute;
     top: 12rem;
     right: 2rem;
+    width: 75%;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, .85),
+        rgba($color-secondary-dark, .85)
+      );
+    }
+  }
+
+  &__details {
+    // 1 - We create a ul with 5 li inside in HTML to create the details section.
+    // 2 - We use basic styling to make the details look good and apply to both ul and li.
+    // 3 - We use padding to add a bit of space and margin: 0 auto; to center the details (the browser will automatically calculate the margin).
+    padding: 3rem;
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
   }
 }
