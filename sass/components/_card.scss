@@ -97,11 +97,21 @@
     }
 
     &--2 {
-      background-image: url(../img/nat-5.jpg);
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
     }
 
     &--3 {
-      background-image: url(../img/nat-5.jpg);
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
     }
   }
 
@@ -111,7 +121,7 @@
     // 3 - We add a background image to the heading-span to create the gradient effect.
     // 4 - We add width 75% to the heading to make sure it doesn't take the full width of the card.
     // 5 - We add a bit of padding inside the __heading-span to create some more space.
-    // IMPORTANT: Note that the __heading-span is treated as one block element, so when we add padding and it goes into two lines, 
+    // IMPORTANT: Note that the __heading-span is treated as one block element, so when we add padding and it goes into two lines,
     // the end of the first line and the beginning of the second line won't have any space. Therefore, we use box-decoration-break: clone; to fix this.
     // 6 - Box-decoration-break: clone; is a new CSS property that allows us to add padding to the text and make sure that the padding is also applied to the second line.
     // Remember to use the prefix first (-webkit-box-decoration-break) and then the standard property (box-decoration-break).
@@ -130,11 +140,28 @@
     padding: 1rem 1.5rem;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
+
     &--1 {
       background-image: linear-gradient(
         to right bottom,
-        rgba($color-secondary-light, .85),
-        rgba($color-secondary-dark, .85)
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
       );
     }
   }
@@ -159,5 +186,40 @@
         }
       }
     }
+  }
+
+  // BACK SIDE STYLING
+  &__cta {
+    // 1 - We use position: absolute; top: 50%; left: 50%; and transform: translate(-50%, -50%); to center the CTA.
+    // 2 - We add basic style to the price box, only, value and text.
+    // 3 - We apply width: 90%; to the cta otherwise the button, which is adapting to the cta, will be too small.
+    // 4 - We apply text-align: center; to the cta to make sure the text and button are centered.
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+  }
+
+  &__price-box {
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 8rem;
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+  }
+
+  &__price-value {
+    font-size: 6rem;
+    font-weight: 100;
+  }
+
+  &__price-text {
+    text-transform: uppercase;
+    font-size: 1.4rem;
   }
 }

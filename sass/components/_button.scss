@@ -45,6 +45,15 @@ IMPORTANT: The transition property must be in the default state of the element, 
         background-color: $color-white;
       }
     }
+
+    &--green {
+      background-color: $color-primary;
+      color: $color-white;
+  
+      &::after {
+        background-color: $color-primary;
+      }
+    }
   
     /* 
     ::after pseudo-element adds a virtual element right after the element that we're selecting (treated as a child of that element).
