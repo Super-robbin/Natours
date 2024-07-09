@@ -1,0 +1,25 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: $color-white;
+    border-radius: 3px;
+    padding: 6rem;
+    font-size: $default-font-size;
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        background-color: orangered;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+
+        // Shape outside property is used to wrap text around the shape, similar to clip-path property,
+        // here we use circle() function to create a circle shape.
+        // 50% is the radius of the circle, so in this case half of the height and half of the width of the element.
+        // 50% 50% is the position of the circle, so in this case the center of the element.
+        // In order to work, the element must be floated, so the text can wrap around it.
+        // The -webkit- prefix is used for Safari, as it doesn't support the shape-outside property without it.
+        shape-outside: circle(50% at 50% 50%);
+    }
+}
