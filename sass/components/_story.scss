@@ -1,25 +1,47 @@
 .story {
-    width: 75%;
-    margin: 0 auto;
-    box-shadow: 0 3rem 6rem rgba($color-black, .1);
-    background-color: $color-white;
-    border-radius: 3px;
-    padding: 6rem;
-    font-size: $default-font-size;
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: $color-white;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  // 1 - The transform property is used to skew the element to the left.
+  // 2 - We then use the & > * selector to select all the direct children of the .story class and skew them back to the right.
+  // 3 - However we can't use more than 1 transform on the same element, so we have to select individual children and apply the skew to them,
+  // both to shape and to text manually.
+  transform: skewX(-12deg);
 
-    &__shape {
-        width: 15rem;
-        height: 15rem;
-        background-color: orangered;
-        float: left;
-        -webkit-shape-outside: circle(50% at 50% 50%);
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    background-color: orangered;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
 
-        // Shape outside property is used to wrap text around the shape, similar to clip-path property,
-        // here we use circle() function to create a circle shape.
-        // 50% is the radius of the circle, so in this case half of the height and half of the width of the element.
-        // 50% 50% is the position of the circle, so in this case the center of the element.
-        // In order to work, the element must be floated, so the text can wrap around it.
-        // The -webkit- prefix is used for Safari, as it doesn't support the shape-outside property without it.
-        shape-outside: circle(50% at 50% 50%);
-    }
+    // Shape outside property is used to define how the text should float around the element,
+    // Clip-path property create the actual circle shape.
+
+    // Here we use circle() function to create a circle shape.
+    // 50% is the radius of the circle, so in this case half of the height and half of the width of the element.
+    // 50% 50% is the position of the circle, so in this case the center of the element.
+    // IMPORTANT: In order to work, the element must be floated, so the text can wrap around it and defined dimensions (width and height).
+    // The -webkit- prefix is used for Safari, as it doesn't support the shape-outside property without it.
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+
+    // The translate property is used to move the element to the left, so the text can wrap around it.
+    transform: translate(-3rem) skewX(12deg);
+  }
+
+  &__img {
+    // We have to give the image a height of 100% to make it fill the entire shape.
+    height: 100%;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
 }
