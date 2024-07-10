@@ -34,14 +34,52 @@
 
     // The translate property is used to move the element to the left, so the text can wrap around it.
     transform: translate(-3rem) skewX(12deg);
+    position: relative;
   }
 
   &__img {
     // We have to give the image a height of 100% to make it fill the entire shape.
+
+    // 1 - The transform property is used to scale the image up and move it to the left (center it).
+    // 2 - We add transition here to make the animation smooth.
+    // 3 - When hovering, we scale the image back to 1.
     height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    backface-visibility: hidden;
+    transition: all 0.5s;
   }
 
   &__text {
     transform: skewX(12deg);
+  }
+
+  &__caption {
+  // We use position absolute here and relative on the shape.
+  // This is the initial position before hovering.
+  // Make sure to use the same translate in both the initial and hover state (i.e. not translate and translateY).
+  // Backface visibility is used to prevent the text from flipping at the end of the animation when the element is hovered.
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 20%);
+  color: $color-white;
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    // 1 - The transform property is used to scale the image back to 1.
+    // 2 - We then use the filter property to make the image blurred and darker.
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%);
   }
 }
