@@ -1,0 +1,18 @@
+.bg-video {
+    // Position absolute here and relative in the home file, section-stories and z-index -2 to make sure the video is behind the text.
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    opacity: .15;
+    overflow: hidden;
+
+    &__content {
+        // object-fit: cover will fit the entire parent element while keeping the aspect ratio.
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}

@@ -250,6 +250,21 @@
         </div>
       </section>
       <section class="section-stories">
+        <!-- 
+        We need to create a container for the video inside the section,
+        and instead of using src inside the video element, we will use src insde the source element.
+        IMPORTANT: We use coverr to get the video, we the get both MP4 and WEBM formats,
+        which will ensure that the video will work in all browsers. 
+        We then put a fallback text in case the browser does not support the video.
+        Finally, we use autoplay, muted and loop.
+        -->
+        <div class="bg-video">
+          <video class="bg-video__content" autoplay muted loop>
+            <source src="img/video.mp4" type="video/mp4" />
+            <source src="img/video.webm" type="video/webm" />
+            Your browser is not supported!
+          </video>
+        </div>
         <div class="u-center-text u-margin-bottom-big">
           <h2 class="heading-secondary">We make people genuinely happy</h2>
         </div>
@@ -272,7 +287,7 @@
                 Quibusdam, sunt nesciunt accusantium accusamus minima in
                 suscipit. Lorem ipsum dolor sit amet, consectetur adipisicing
                 elit. Quibusdam, sunt nesciunt accusantium accusamus minima in
-                suscipit. 
+                suscipit.
               </p>
             </div>
           </div>
@@ -297,7 +312,7 @@
                 Quibusdam, sunt nesciunt accusantium accusamus minima in
                 suscipit. Lorem ipsum dolor sit amet, consectetur adipisicing
                 elit. Quibusdam, sunt nesciunt accusantium accusamus minima in
-                suscipit. 
+                suscipit.
               </p>
             </div>
           </div>
