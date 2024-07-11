@@ -1,36 +1,68 @@
 .section-about {
-    background-color: $color-grey-light-1;
-    padding: 25rem 0;
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
 
-    margin-top: -20vh
+  margin-top: -20vh;
 }
 
 .section-features {
-    padding: 20rem 0;
-    // We recreated the gradient from the header and use skew instead of clip-path. However, this will skew all the children elements as well.
-    // To fix this, we use the & > * selector to select all the direct children of the section-features class and skew them back to normal.
-    background-image: linear-gradient(
-        to right bottom,
-        rgba($color-primary-light, 0.8),
-        rgba($color-primary-dark, 0.8)
-      ),
-      url(../img/nat-4.jpg);
-      background-size: cover;
-    
-    transform: skewY(-7deg);
-    margin-top: -11rem;
-    & > * {
-        transform: skewY(7deg);
-    }
+  padding: 20rem 0;
+  // We recreated the gradient from the header and use skew instead of clip-path. However, this will skew all the children elements as well.
+  // To fix this, we use the & > * selector to select all the direct children of the section-features class and skew them back to normal.
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/nat-4.jpg);
+  background-size: cover;
+
+  transform: skewY(-7deg);
+  margin-top: -11rem;
+  & > * {
+    transform: skewY(7deg);
+  }
 }
 
 .section-tours {
-    background-color: $color-grey-light-1;
-    padding: 25rem 0 15rem 0;
-    margin-top: -11rem;
+  background-color: $color-grey-light-1;
+  padding: 25rem 0 15rem 0;
+  margin-top: -11rem;
 }
 
 .section-stories {
-    position: relative;
-    padding: 15rem 0;
+  position: relative;
+  padding: 15rem 0;
+}
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary-light, 0.8),
+    rgba($color-primary-dark, 0.8)
+  );
+}
+
+.book {
+  // 1 - We use both the image and a linear gradient to create the nice effect.
+  // 2 - We can use degrees to change the direction of the gradient.
+  // 3 - We use percentages to define which part the colour will take (i.e. white 0%, orangered 50%).
+  // IMPORTANT: We need to use 2 colours at the same percentage to create a solid line.
+  // 4 - We use transparent as second 50% colour to create the solid line and have the image visible.
+  background-image: linear-gradient(105deg,
+                                 rgba($color-white, .9) 0%,
+                                 rgba($color-white, .9) 50%,
+                                 transparent 50%),
+                                 url(../img/nat-10.jpg);
+  background-size: 100%; // Same as cover, if we decrease it, we will see the image repeat.
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+  height: 50rem;
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+  }
 }
