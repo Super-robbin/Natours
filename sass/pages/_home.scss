@@ -50,11 +50,13 @@
   // 3 - We use percentages to define which part the colour will take (i.e. white 0%, orangered 50%).
   // IMPORTANT: We need to use 2 colours at the same percentage to create a solid line.
   // 4 - We use transparent as second 50% colour to create the solid line and have the image visible.
-  background-image: linear-gradient(105deg,
-                                 rgba($color-white, .9) 0%,
-                                 rgba($color-white, .9) 50%,
-                                 transparent 50%),
-                                 url(../img/nat-10.jpg);
+  background-image: linear-gradient(
+      105deg,
+      rgba($color-white, 0.9) 0%,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../img/nat-10.jpg);
   background-size: 100%; // Same as cover, if we decrease it, we will see the image repeat.
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);

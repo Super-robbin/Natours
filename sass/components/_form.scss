@@ -1,0 +1,57 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    // NOTE: All the elements automatically inherit the font-family and font-size from the body element,
+    // but not the input elements, so we have to set it manually here.
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, 0.5);
+    border: none;
+    // We use border-bottom transparent otherwise when we focus, the input below will move down.
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:focus:invalid {
+      // This will use the browser validation to show an orange line when invalid input.
+      border-bottom: 3px solid $color-secondary-dark;
+    }
+
+    &::-webkit-input-placeholder {
+      // This will change the colour of the placeholder itself.
+      color: $color-grey-dark-2;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s;
+  }
+
+  // NOTE: The placeholder-shown is a pseudo-class that is applied when the placeholder is shown.
+  // As we need to style the label too, and they are siblings, we use the sibling selector (+).
+  // We use (+) because label is just after the input, otherwise we would use (~).
+  // 1 - When the placeholder is shown, we want the label to be hidden.
+  // 2 - We then use the translateY so when we start writing, the label will move down.
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+}
